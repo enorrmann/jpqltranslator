@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.ajax4jsf.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
+
+	<rich:modalPanel 
+		autosized="true"
+		showWhenRendered="#{facesContext.maximumSeverity !=null}"
+		id="mpErrores"
+		>
+		<f:facet name="header">
+			<h:panelGroup>
+				<h:outputText value="Exception stack trace" />
+			</h:panelGroup>
+		</f:facet>
+		<f:facet name="controls">
+			<h:panelGroup>
+				<h:graphicImage
+					value="/images/close.gif"
+					style="cursor:pointer"
+					id="hideMpErrores" />
+				<rich:componentControl for="mpErrores"
+					attachTo="hideMpErrores"
+					operation="hide"
+					event="onclick" />
+			</h:panelGroup>
+		</f:facet>
+		<div style="height: 250px; overflow: auto;">
+			<h:outputText value="#{jpqlTranslatorBean.stackTrace}"/>
+		</div>
+	</rich:modalPanel>
+</f:view>

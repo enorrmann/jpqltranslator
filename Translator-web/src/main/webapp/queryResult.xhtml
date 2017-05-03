@@ -1,0 +1,25 @@
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:rich="http://richfaces.ajax4jsf.org/rich"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j">
+
+<table>
+<tr>
+<td class="reservedWord">SELECT</td>
+<td class="sqlText"><h:outputText escape="false" value="#{jpqlTranslatorBean.selectSQL}"/></td>
+</tr>
+<tr>
+<td class="reservedWord">FROM</td>
+<td class="sqlText"><h:outputText escape="false" value="#{jpqlTranslatorBean.fromSQL}"/></td>
+</tr>
+<tr>
+<td class="reservedWord">
+<h:outputText escape="false" value="#{jpqlTranslatorBean.whereWord}"/></td>
+<td class="sqlText"><h:outputText escape="false" value="#{jpqlTranslatorBean.whereSQL}"/></td>
+</tr>
+
+
+</table>
+</f:view>

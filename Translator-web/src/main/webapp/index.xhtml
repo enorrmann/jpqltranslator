@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:rich="http://richfaces.ajax4jsf.org/rich"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<title>JPQL Translator</title>
+</head>
+
+<body>
+<h:form id="frmJpqlp">
+	<div style="float: left; width: 40%; margin-right: 5px;">
+		<h:inputTextarea rows="25" cols="60" id="txtAreaJPQL" value="#{jpqlTranslatorBean.jpql}"/>
+		<h:commandButton value="Translate" action="#{jpqlTranslatorBean.translate}"/>
+		<h:commandButton value="Execute!" action="#{jpqlTranslatorBean.getResultList}"/>
+		<input type="button" value="History" onclick="javascript:Richfaces.showModalPanel('mpHistory')"/>
+	</div>
+	<div style="float: left; width: 40%; margin-right: 5px;">
+		<ui:include src="queryResult.xhtml" />
+	</div>
+	<div style="clear: both;"> </div>
+	<h:outputText id="otTranslated" escape="false" value="#{jpqlTranslatorBean.resultString}"/>
+	<h:messages/>
+</h:form>
+</body>
+	<ui:include src="modalHistory.xhtml"/>
+	<ui:include src="modalErrors.xhtml"/>
+</html>

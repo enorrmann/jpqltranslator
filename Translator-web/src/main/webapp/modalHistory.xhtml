@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.ajax4jsf.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
+
+	<rich:modalPanel 
+		autosized="true"
+		id="mpHistory"
+		>
+		<f:facet name="header">
+			<h:panelGroup>
+				<h:outputText value="History" />
+			</h:panelGroup>
+		</f:facet>
+		<f:facet name="controls">
+			<h:panelGroup>
+				<h:graphicImage
+					value="/images/close.gif"
+					style="cursor:pointer"
+					id="hideMpHistory" />
+				<rich:componentControl for="mpHistory"
+					attachTo="hideMpHistory"
+					operation="hide"
+					event="onclick" />
+			</h:panelGroup>
+		</f:facet>
+	<h:form id="frmHistory">
+		<div style="width:400px; height: 250px; overflow: auto;">
+		<rich:dataTable
+			width="100%"
+			value="#{jpqlTranslatorBean.queryHistory}"
+			var="history">
+			<a4j:support
+				event="onRowClick"
+				reRender="txtAreaJPQL">
+				<f:setPropertyActionListener value="#{history}"	 target="#{jpqlTranslatorBean.jpql}"/>
+			</a4j:support>
+			<rich:column >
+				<h:outputText value="#{history}" />
+			</rich:column>			
+		</rich:dataTable>
+		</div>
+	</h:form>
+	</rich:modalPanel>
+</f:view>
